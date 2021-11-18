@@ -5,7 +5,6 @@ samples_df = (
     .set_index("sample_id", drop=False)
     .sort_index()
 )
-print(samples_df)
 
 def get_fqs(wildcards):
     r1 = samples_df.loc[wildcards.sample, "R1"]

@@ -12,8 +12,6 @@ samples_df = pd.read_csv(config["samplesheet"], sep="\t",
 
 SAMPLES = samples_df.sample_id.to_list()
 
-print(SAMPLES)
-
 include: "rules/common.smk"
 include: "rules/centrifuge.smk"
 include: "rules/kraken2.smk"
