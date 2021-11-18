@@ -24,7 +24,7 @@ rule all:
     input:
         expand(
             [
-            "results/{sample}/centrifuge/{sample}.centrifuge.out"
+            "results/{sample}/centrifuge/{sample}.centrifuge.out",
             "results/{sample}/kraken2/{sample}.kraken2.out",
             "results/{sample}/kaiju/{sample}.kaiju.out"
             ],
