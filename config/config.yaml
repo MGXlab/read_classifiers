@@ -2,7 +2,7 @@ samplesheet: "config/samples.tsv"
 
 centrifuge:
   # Use the prefix of the .cf files
-  index: "/net/mgx/linuxhome/mgx/databases/centrifuge/nt/nt"
+  index: "/net/mgx/linuxhome/mgx/programs/centrifuge/nt/nt"
 
 kraken2:
   # Use the directory name where all db files are stored
