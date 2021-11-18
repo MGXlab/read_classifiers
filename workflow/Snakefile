@@ -1,0 +1,32 @@
+import pandas as pd
+from snakemake.utils import min_version
+
+min_version("6.0")
+
+configfile: "config/config.yaml"
+
+
+samples_df = pd.read_csv(config["samplesheet"], sep="\t", 
+                      dtype={"sample_id" : "string"}
+                      )
+
+SAMPLES = samples_df.sample_id.to_list()
+
+print(SAMPLES)
+
+include: "rules/common.smk"
+include: "rules/centrifuge.smk"
+include: "rules/kraken2.smk"
+include: "rules/kaiju.smk"
+
+
+rule all:
+    input:
+        expand(
+            [
+            "results/{sample}/centrifuge/{sample}.centrifuge.out"
+            "results/{sample}/kraken2/{sample}.kraken2.out",
+            "results/{sample}/kaiju/{sample}.kaiju.out"
+            ],
+            sample=SAMPLES
+        )

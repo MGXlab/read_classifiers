@@ -1,0 +1,5 @@
+channels:
+  - bioconda
+dependencies:
+  - kraken=2.1.2
+  - bracken=2.6.1
