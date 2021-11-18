@@ -6,7 +6,7 @@ centrifuge:
 
 kraken2:
   # Use the directory name where all db files are stored
-  index: "/net/mgx/linuxhome/mgx/programs/kraken2/k2_pluspf_20210517"
+  index_dir: "/net/mgx/linuxhome/mgx/programs/kraken2/k2_pluspf_20210517"
 
 kaiju:
   # Use the exact path to the fmi file
