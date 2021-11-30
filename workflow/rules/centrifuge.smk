@@ -1,14 +1,14 @@
 rule centrifuge_classify:
-    input: 
+    input:
         fqs = get_fqs,
     output:
         cf_out = "results/{sample}/centrifuge/{sample}.centrifuge.out",
-        cf_report = "results/{sample}/centrifuge/{sample}.centrifuge_report.tsv"        
+        cf_report = "results/{sample}/centrifuge/{sample}.centrifuge_report.tsv"
     log:
         "results/logs/{sample}_centrifuge.log"
     params:
         cf_index = config["centrifuge"]["index"]
-    threads: 8
+    threads: 16
     conda:
         "../envs/centrifuge.yaml"
     benchmark:
@@ -20,3 +20,23 @@ rule centrifuge_classify:
         "-S {output.cf_out} "
         "--report-file {output.cf_report} "
         "&>{log}"
+
+rule centrifuge_kreport:
+    input:
+        cf_out = rules.centrifuge_classify.output.cf_out,
+    output:
+        cf_kreport = "results/{sample}/centrifuge/{sample}.centrifuge.kreport.txt",
+    log:
+        "results/logs/{sample}.centrifuge_kreport.log"
+    params:
+        cf_index = config["centrifuge"]["index"]
+    threads: 1
+    conda:
+        "../envs/centrifuge.yaml"
+    benchmark:
+        "results/benchmarks/{sample}.centrifuge.tsv"
+    shell:
+        "centrifuge-kreport "
+        "-x {params.cf_index} "
+        "{input.cf_out} >{output.cf_kreport} "
+        "2>{log}"
