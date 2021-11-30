@@ -13,3 +13,4 @@ kaiju:
   index: "/net/mgx/linuxhome/mgx/programs/kaiju/nr_euk_20210224/kaiju_db_nr_euk.fmi"
   # Use the exact path to the nodes file
   nodes_dmp: "/net/mgx/linuxhome/mgx/programs/kaiju/nr_euk_20210224/nodes.dmp"
+  names_dmp: "/net/mgx/linuxhome/mgx/programs/kaiju/nr_euk_20210224/names.dmp"
