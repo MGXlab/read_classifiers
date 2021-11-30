@@ -6,7 +6,7 @@ min_version("6.0")
 configfile: "config/config.yaml"
 
 
-samples_df = pd.read_csv(config["samplesheet"], sep="\t", 
+samples_df = pd.read_csv(config["samplesheet"], sep="\t",
                       dtype={"sample_id" : "string"}
                       )
 
@@ -23,8 +23,11 @@ rule all:
         expand(
             [
             "results/{sample}/centrifuge/{sample}.centrifuge.out",
+            "results/{sample}/centrifuge/{sample}.centrifuge.kreport.txt",
             "results/{sample}/kraken2/{sample}.kraken2.out",
-            "results/{sample}/kaiju/{sample}.kaiju.out"
+            "results/{sample}/kaiju/{sample}.kaiju.names.out",
+            "results/{sample}/kaiju/{sample}.{rank}.kaiju_table.tsv",
             ],
-            sample=SAMPLES
+            sample=SAMPLES,
+            rank=["phylum", "order", "class", "family", "genus", "species"]
         )
