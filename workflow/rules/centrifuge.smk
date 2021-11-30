@@ -34,7 +34,7 @@ rule centrifuge_kreport:
     conda:
         "../envs/centrifuge.yaml"
     benchmark:
-        "results/benchmarks/{sample}.centrifuge.tsv"
+        "results/benchmarks/{sample}.centrifuge_kreport.tsv"
     shell:
         "centrifuge-kreport "
         "-x {params.cf_index} "
