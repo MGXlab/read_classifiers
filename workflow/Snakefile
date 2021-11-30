@@ -25,9 +25,11 @@ rule all:
             "results/{sample}/centrifuge/{sample}.centrifuge.out",
             "results/{sample}/centrifuge/{sample}.centrifuge.kreport.txt",
             "results/{sample}/kraken2/{sample}.kraken2.out",
+            "results/{sample}/kraken2/{sample}.{kraken_rank}.bracken.kreport.txt",
             "results/{sample}/kaiju/{sample}.kaiju.names.out",
             "results/{sample}/kaiju/{sample}.{rank}.kaiju_table.tsv",
             ],
             sample=SAMPLES,
-            rank=["phylum", "order", "class", "family", "genus", "species"]
+            rank=["phylum", "order", "class", "family", "genus", "species"],
+            kraken_rank=["D", "P", "O", "C", "F", "G", "S"]
         )
