@@ -25,7 +25,7 @@ rule kraken2_classify:
         "--paired "
         "--classified-out {params.classified_prefix} "
         "{input.fqs[0]} {input.fqs[1]} "
-        "&>{log"
+        "&>{log}"
 
 rule bracken:
     input:
